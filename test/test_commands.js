@@ -39,10 +39,9 @@ describe('tasks', function(){
     after(cleanFile);
 
     it('should make a new version', function(done){
-        //TODO: fix this test, use lib files directly
         grunt.util.spawn({ grunt: true, args: ['git-flow-version', '--gruntfile=test/data/Gruntfile.coffee']}, function(error, result, code) {
-            //var testPkg = grunt.file.readJSON(testFile);
-            //expect(testPkg.version).to.equal('0.0.1');
+            var testPkg = grunt.file.readJSON(testFile);
+            expect(testPkg.version).to.equal('0.0.1');
             console.log('error, result, code', error, result, code);
             done();
         });

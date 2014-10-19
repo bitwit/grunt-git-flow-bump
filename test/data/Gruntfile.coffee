@@ -1,7 +1,8 @@
 module.exports = (grunt) ->
   grunt.initConfig
     'git-flow-version':
-      options: {}
+      options:
+        files: ['testPackage.json']
 
   grunt.loadTasks '../../tasks'
 
