@@ -21,6 +21,7 @@
     "lodash": "~2.4.1"
   },
   "dependencies": {
-    "semver": "~4.1.0"
+    "semver": "~4.1.0",
+    "q": "~1.0.1"
   }
 }

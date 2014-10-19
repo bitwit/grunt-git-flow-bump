@@ -1,6 +1,12 @@
-# grunt-bump
+#Grunt Git Flow Version Bumper
 
-> Bump package version, create tag, commit, push ...
+> This bumps your git project according to an opinionated git workflow.
+
+> Set up your MAJOR, and MINOR branch name, from which merges will trigger according versions and
+all other branch merges will be considered PATCH.
+
+> Never concern yourself with what kind of bumping to give your next version again. Let your workflow
+do the choosing.
 
 ## Getting Started
 This plugin requires Grunt.
@@ -14,27 +20,26 @@ npm install grunt-bump --save-dev
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-bump');
+grunt.loadNpmTasks('grunt-git-flow-version');
 ```
 
 ### Configuration
-In your project's Gruntfile, add a section named `bump` to the data object passed into `grunt.initConfig()`. The options (and defaults) are:
+In your project's Gruntfile, add a section named `git-flow-version` to the data object passed into `grunt.initConfig()`. The options (and defaults) are:
 
 ```js
 grunt.initConfig({
   bump: {
     options: {
       files: ['package.json'],
-      updateConfigs: [],
-      commit: true,
+      patchBranch: '*',
+      minorBranch: 'develop',
+      majorBranch: 'release',
+      masterOnly: true,
+      updateConfigs: [], // array of config properties to update (with files)
       commitMessage: 'Release v%VERSION%',
       commitFiles: ['package.json'],
-      createTag: true,
       tagName: 'v%VERSION%',
-      tagMessage: 'Version %VERSION%',
-      push: true,
-      pushTo: 'upstream',
-      gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+      tagMessage: 'Version %VERSION%'
       globalReplace: false
     }
   },
@@ -48,6 +53,10 @@ Type: `Array`
 Default value: `['package.json']`
 
 Maybe you wanna bump 'component.json' instead? Or maybe both: `['package.json', 'component.json']`? Can be either a list of files to bump (an array of files) or a grunt glob (e.g., `['*.json']`).
+
+### options.minorBranch
+
+### options.majorBranch
 
 #### options.updateConfigs
 Type: `Array`
@@ -121,75 +130,3 @@ Type: `Boolean`
 Default value: `false`
 
 Replace all occurrences of the version in the file. When set to `false`, only the first occurrence will be replaced.
-
-### Usage Examples
-
-Let's say current version is `0.0.1`.
-
-```bash
-$ grunt bump
->> Version bumped to 0.0.2
->> Committed as "Release v0.0.2"
->> Tagged as "v0.0.2"
->> Pushed to origin
-
-$ grunt bump:patch
->> Version bumped to 0.0.3
->> Committed as "Release v0.0.3"
->> Tagged as "v0.0.3"
->> Pushed to origin
-
-$ grunt bump:minor
->> Version bumped to 0.1.0
->> Committed as "Release v0.1.0"
->> Tagged as "v0.1.0"
->> Pushed to origin
-
-$ grunt bump:major
->> Version bumped to 1.0.0
->> Committed as "Release v1.0.0"
->> Tagged as "v1.0.0"
->> Pushed to origin
-
-$ grunt bump:prerelease
->> Version bumped to 1.0.0-1
->> Committed as "Release v1.0.0-1"
->> Tagged as "v1.0.0-1"
->> Pushed to origin
-
-$ grunt bump:patch
->> Version bumped to 1.0.1
->> Committed as "Release v1.0.1"
->> Tagged as "v1.0.1"
->> Pushed to origin
-
-$ grunt bump:git
->> Version bumped to 1.0.1-ge96c
->> Committed as "Release v1.0.1-ge96c"
->> Tagged as "v1.0.1-ge96c"
->> Pushed to origin
-````
-
-If you want to jump to an exact version, you can use the ```setversion``` tag in the command line.
-
-```bash
-$ grunt bump --setversion=2.0.1
->> Version bumped to 2.0.1
->> Committed as "Release v2.0.1"
->> Tagged as "v2.0.1"
->> Pushed to origin
-```
-
-Sometimes you want to run another task between bumping the version and committing, for instance generate changelog. You can use `bump-only` and `bump-commit` to achieve that:
-
-```bash
-$ grunt bump-only:minor
-$ grunt changelog
-$ grunt bump-commit
-```
-
-## Contributing
-See the [contributing guide](https://github.com/vojtajina/grunt-bump/blob/master/CONTRIBUTING.md) for more information. In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/): `grunt test jshint`.
-
-## License
-Copyright (c) 2014 Vojta Jína. Licensed under the MIT license.

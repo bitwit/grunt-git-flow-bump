@@ -9,6 +9,14 @@ module.exports = (grunt) ->
           reporter: 'spec',
         src: ['test/**/*.js']
 
+    'git-flow-version':
+      options:
+        minorBranch: 'develop'
+        majorBranch: 'release'
+
+
+  grunt.loadTasks 'tasks'
+
   grunt.registerTask 'test', ['mochaTest']
 
   grunt.registerTask 'default', ['test']
