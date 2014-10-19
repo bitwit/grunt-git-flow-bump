@@ -15,7 +15,7 @@ module.exports = (grunt) ->
         majorBranch: 'release'
 
 
-  grunt.loadTasks 'tasks'
+  grunt.loadTasks ['tasks']
 
   grunt.registerTask 'test', ['mochaTest']
 
