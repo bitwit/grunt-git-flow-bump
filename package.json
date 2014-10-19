@@ -4,7 +4,7 @@
   "description": "Version your project according to an opinionated git workflow",
   "main": "tasks/git_flow_version.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt mochaTest"
   },
   "keywords": [
     "grunt"
