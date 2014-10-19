@@ -1,0 +1,26 @@
+{
+  "name": "grunt-git-flow-version",
+  "version": "0.0.0",
+  "description": "Version your project according to an opinionated git workflow",
+  "main": "tasks/git_flow_version.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "keywords": [
+    "grunt"
+  ],
+  "author": "Kyle Newsome",
+  "license": "BSD-2-Clause",
+  "peerDependencies": {
+    "grunt": ">=0.4.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.0",
+    "grunt-mocha-test": "~0.12.1",
+    "chai": "~1.9.2",
+    "lodash": "~2.4.1"
+  },
+  "dependencies": {
+    "semver": "~4.1.0"
+  }
+}
