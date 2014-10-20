@@ -1,6 +1,6 @@
 module.exports = (grunt) ->
   grunt.initConfig
-    'git-flow-version':
+    gitFlowBump:
       options:
         files: ['testPackage.json']
 

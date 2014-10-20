@@ -6,7 +6,7 @@ var bump = require('../lib/bump');
 module.exports = function (grunt) {
 
     var DESC = 'Version your project according to an opinionated git workflow';
-    grunt.registerTask('git-flow-version', DESC, function () {
+    grunt.registerTask('gitFlowBump', DESC, function () {
         var opts = this.options({
             files: ['package.json'],
             patchBranch: '*',

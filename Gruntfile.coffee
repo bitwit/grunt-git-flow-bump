@@ -9,7 +9,7 @@ module.exports = (grunt) ->
           reporter: 'spec',
         src: ['test/**/*.js']
 
-    'git-flow-version':
+    gitFlowBump:
       options:
         files: ['package.json']
         minorBranch: 'develop'
