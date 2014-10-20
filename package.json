@@ -19,7 +19,8 @@
     "grunt-mocha-test": "~0.12.1",
     "chai": "~1.9.2",
     "lodash": "~2.4.1",
-    "load-grunt-tasks": "~0.6.0"
+    "load-grunt-tasks": "~0.6.0",
+    "chai-as-promised": "~4.1.1"
   },
   "dependencies": {
     "semver": "~4.1.0",
