@@ -13,11 +13,15 @@ module.exports = function (grunt) {
             minorBranch: 'develop',
             majorBranch: 'release',
             masterOnly: true,
-            updateConfigs: [], // array of config properties to update (with files)
+            updateConfigs: [],
+            commit: true,
             commitMessage: 'Release v%VERSION%',
             commitFiles: ['package.json'],
+            createTag: true,
             tagName: 'v%VERSION%',
-            tagMessage: 'Version %VERSION%'
+            tagMessage: 'Version %VERSION%',
+            push: true,
+            pushTo: 'upstream'
         });
 
         var done = this.async();
@@ -29,18 +33,25 @@ module.exports = function (grunt) {
                     return bump.replaceFiles(grunt, opts, bumpAs);
                 })
                 .then(function(version){
-                    return git.commitChanges(grunt, opts, version);
+                    if(opts.commit){
+                        return git.commitChanges(grunt, opts, version);
+                    }
+                    return version;
                 })
                 .then(function(version){
-                    return git.tagCommit(grunt, opts, version);
+                    if(opts.createTag){
+                        return git.tagCommit(grunt, opts, version);
+                    }
                 })
                 .then(function(){
-                    done();
+                    if(opts.push){
+                        return git.pushToRemote(grunt, opts);
+                    }
                 })
                 .catch(function(reason){
                     grunt.fatal(reason);
-                    done();
-                });
+                })
+                .finally(done);
         }
 
     });

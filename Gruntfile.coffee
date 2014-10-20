@@ -11,10 +11,13 @@ module.exports = (grunt) ->
 
     'git-flow-version':
       options:
+        files: ['package.json']
         minorBranch: 'develop'
         majorBranch: 'release'
+        pushTo: 'origin'
 
 
+  grunt.loadTasks('tasks')
 
   grunt.registerTask 'default', ['mochaTest']
   grunt.registerTask 'test', ['default']
