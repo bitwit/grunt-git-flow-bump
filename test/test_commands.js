@@ -50,9 +50,8 @@ describe('lib functions', function () {
             files: [testFile],
             updateConfigs: []
         };
-        var bumpAs = 'patch';
         var expected = '0.0.1';
-        return bump.replaceFiles(grunt, opts, bumpAs)
+        return bump.replaceFiles(grunt, opts, expected)
             .should.eventually.equal(expected)
             .notify(function () {
                 var testPkg = grunt.file.readJSON(testFile);
@@ -66,9 +65,8 @@ describe('lib functions', function () {
             files: [testFile],
             updateConfigs: []
         };
-        var bumpAs = 'minor';
         var expected = '0.1.0';
-        return bump.replaceFiles(grunt, opts, bumpAs)
+        return bump.replaceFiles(grunt, opts, expected)
             .should.eventually.equal(expected)
             .notify(function () {
                 var testPkg = grunt.file.readJSON(testFile);
@@ -82,9 +80,8 @@ describe('lib functions', function () {
             files: [testFile],
             updateConfigs: []
         };
-        var bumpAs = 'major';
         var expected = '1.0.0';
-        return bump.replaceFiles(grunt, opts, bumpAs)
+        return bump.replaceFiles(grunt, opts, expected)
             .should.eventually.equal(expected)
             .notify(function () {
                 var testPkg = grunt.file.readJSON(testFile);

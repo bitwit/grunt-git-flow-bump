@@ -17,9 +17,9 @@ module.exports = (grunt) ->
         pushTo: 'origin'
       prod:
         options:
-          createTag: no
-          push: no
-          commit: no
+          createTag: yes
+          push: yes
+          commit: yes
       staging:
         options:
           forceGitVersion: yes
