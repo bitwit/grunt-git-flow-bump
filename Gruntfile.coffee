@@ -15,6 +15,14 @@ module.exports = (grunt) ->
         minorBranch: 'develop'
         majorBranch: 'release'
         pushTo: 'origin'
+      prod:
+        options:
+          createTag: no
+          push: no
+          commit: no
+      staging:
+        options:
+          forceGitVersion: yes
 
 
   grunt.loadTasks('tasks')
