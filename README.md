@@ -1,6 +1,6 @@
 #Grunt Git Flow Bump
 
-[![NPM](https://nodei.co/npm/strider-scheduler.png)](https://nodei.co/npm/grunt-git-flow-bump/)
+[![NPM](https://nodei.co/npm/grunt-git-flow-bump.png)](https://nodei.co/npm/grunt-git-flow-bump/)
 
 [![Build Status](https://travis-ci.org/bitwit/grunt-git-flow-bump.svg?branch=master)](https://travis-ci.org/bitwit/grunt-git-flow-bump)
 
