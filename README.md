@@ -27,11 +27,11 @@ npm install grunt-bump --save-dev
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-git-flow-version');
+grunt.loadNpmTasks('grunt-git-flow-bump');
 ```
 
 ### Configuration
-In your project's Gruntfile, add a section named `git-flow-version` to the data object passed into `grunt.initConfig()`. The options (and defaults) are:
+In your project's Gruntfile, add a section named `git-flow-bump` to the data object passed into `grunt.initConfig()`. The options (and defaults) are:
 
 ```js
 grunt.initConfig({
