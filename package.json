@@ -1,6 +1,6 @@
 {
   "name": "grunt-git-flow-version",
-  "version": "0.0.3",
+  "version": "v0.0.3-d",
   "description": "Version your project according to an opinionated git workflow",
   "main": "tasks/git_flow_version.js",
   "scripts": {

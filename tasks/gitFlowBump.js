@@ -1,8 +1,9 @@
 'use strict';
 
+var q = require('q');
 var git = require('../lib/git');
 var bump = require('../lib/bump');
-var q = require('q');
+var taskSpawner = require('../lib/taskSpawner');
 
 module.exports = function (grunt) {
 
@@ -19,6 +20,13 @@ module.exports = function (grunt) {
             patchBranch: '*',
             masterOnly: true,
 
+            //Bumping Related
+            //Git versioning
+            forceGitVersion: false,
+            gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+            //Post Bump
+            postBumpTasks: [],
+
             //Commit related
             commit: true,
             commitMessage: 'Release v%VERSION%',
@@ -33,14 +41,12 @@ module.exports = function (grunt) {
             push: true,
             pushTo: 'upstream',
 
-            //Git version related
-            forceGitVersion: false,
-            gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
         });
 
         var done = this.async();
         // TODO: check for existing tag
         var isAlreadyTagged = false;
+        var version = null;
         if (!isAlreadyTagged) {
 
 
@@ -59,16 +65,21 @@ module.exports = function (grunt) {
             })
                 .then(function (bumpAs) {
                     if (bumpAs === 'git') {
+                        grunt.log.ok('Using git versioning');
                         return git.getGitVersion(grunt, opts);
                     } else {
                         return bump.getExactVersion(grunt, opts, bumpAs);
                     }
                 })
                 .then(function (bumpTo) {
-                    grunt.log.writeln('Bumping files to ' + bumpTo);
+                    version = bumpTo;
+                    grunt.log.ok('Bumping files to ' + bumpTo);
                     return bump.replaceFiles(grunt, opts, bumpTo);
                 })
-                .then(function (version) {
+                .then(function(){
+                    return taskSpawner.runTasks(grunt, opts.postBumpTasks);
+                })
+                .then(function () {
                     if (opts.forceGitVersion) {
                         return q.reject(null);
                     }
@@ -77,7 +88,7 @@ module.exports = function (grunt) {
                     }
                     return version;
                 })
-                .then(function (version) {
+                .then(function () {
                     if (opts.createTag) {
                         return git.tagCommit(grunt, opts, version);
                     }

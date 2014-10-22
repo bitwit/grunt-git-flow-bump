@@ -23,9 +23,13 @@ module.exports = (grunt) ->
       staging:
         options:
           forceGitVersion: yes
+          postBumpTasks: ['tester']
 
 
   grunt.loadTasks('tasks')
 
   grunt.registerTask 'default', ['mochaTest']
   grunt.registerTask 'test', ['default']
+
+  grunt.registerTask 'tester', ->
+    grunt.log.writeln 'Hello from the tester task'
