@@ -21,7 +21,7 @@ This plugin requires Grunt.
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-bump --save-dev
+npm install grunt-git-flow-bump --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
@@ -31,11 +31,11 @@ grunt.loadNpmTasks('grunt-git-flow-bump');
 ```
 
 ### Configuration
-In your project's Gruntfile, add a section named `git-flow-bump` to the data object passed into `grunt.initConfig()`. The options (and defaults) are:
+In your project's Gruntfile, add a section named `gitFlowBump` to the data object passed into `grunt.initConfig()`. The options (and defaults) are:
 
 ```js
 grunt.initConfig({
-  bump: {
+  gitFlowBump: {
     options: {
       files: ['package.json'],
       updateConfigs: [], // array of config properties to update (with files)
@@ -86,7 +86,7 @@ Default value: `[]`
 Sometimes you load the content of `package.json` into a grunt config. This will update the config property, so that even tasks running in the same grunt process see the updated value.
 
 ```js
-bump: {
+gitFlowBump: {
   files:         ['package.json', 'component.json'],
   updateConfigs: ['pkg',          'component']
 }
