@@ -7,8 +7,11 @@
 > Set up your MAJOR, and MINOR branch name, from which merges will trigger according versions and
 all other branch merges will be considered PATCH.
 
+> This grunt task has been developed with continuous delivery in mind, when it may be impractical
+to bump manually.
+
 > Never concern yourself with what kind of bumping to give your next version again. Let your workflow
-do the choosing.
+do the talking.
 
 ## Getting Started
 This plugin requires Grunt.
