@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/bitwit/grunt-git-flow-version.svg?branch=master)](https://travis-ci.org/bitwit/grunt-git-flow-version)
 
-#Grunt Git Flow Version Bumper
+#Grunt Git Flow Bump
 
 > This bumps your git project according to an opinionated git workflow.
 
