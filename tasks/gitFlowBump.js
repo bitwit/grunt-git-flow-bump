@@ -39,8 +39,7 @@ module.exports = function (grunt) {
 
             //Push related
             push: true,
-            pushTo: 'upstream',
-
+            pushTo: 'upstream'
         });
 
         var done = this.async();

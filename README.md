@@ -33,16 +33,30 @@ grunt.initConfig({
   bump: {
     options: {
       files: ['package.json'],
-      patchBranch: '*',
-      minorBranch: 'develop',
-      majorBranch: 'release',
-      masterOnly: true,
       updateConfigs: [], // array of config properties to update (with files)
+
+      majorBranch: 'release',
+      minorBranch: 'develop',
+      patchBranch: '*',
+      masterOnly: true,
+
+      forceGitVersion: false,
+      gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+
+      postBumpTasks: [], //tasks to run between versioning and git tag, commit, push
+
+      commit: true,
       commitMessage: 'Release v%VERSION%',
       commitFiles: ['package.json'],
+
+      createTag: true,
       tagName: 'v%VERSION%',
-      tagMessage: 'Version %VERSION%'
-      globalReplace: false
+      tagMessage: 'Version %VERSION%',
+
+      push: true,
+      pushTo: 'upstream'
+
+
     }
   },
 })
