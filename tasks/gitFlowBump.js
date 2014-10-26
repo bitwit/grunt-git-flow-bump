@@ -43,15 +43,25 @@ module.exports = function (grunt) {
         });
 
         var done = this.async();
+        var version;
+        // First check if the commit is already tagged
         q.fcall(function () {
             return git.isCommitTagged(grunt, opts);
         })
+            // Next, if tagged exit quietly
+            // Otherwise, look at the
             .then(function (isTagged) {
                 if (isTagged) {
                     grunt.log.writeln('Commit is already tagged');
                     return q.reject(null);
+                } else if(opts.forceGitVersion){
+                    return null;
+                } else {
+                    return git.getCommitHash(grunt, opts);
                 }
-                else if (opts.forceGitVersion) {
+            })
+            .then(function (hash) {
+                if (opts.forceGitVersion) {
                     var deferred = q.defer();
                     var firstAction = function () {
                         deferred.resolve('git');
@@ -60,7 +70,7 @@ module.exports = function (grunt) {
                     return deferred.promise;
                 }
                 else {
-                    return git.determineBumpType(grunt, opts);
+                    return git.determineBumpType(grunt, opts, hash);
                 }
             })
             .then(function (bumpAs) {
