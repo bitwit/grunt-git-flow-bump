@@ -2,9 +2,13 @@
   "name": "grunt-git-flow-bump",
   "version": "0.0.6",
   "description": "Version your project according to an opinionated git workflow",
-  "main": "tasks/git_flow_version.js",
+  "main": "tasks/gitFlowBump.js",
   "scripts": {
     "test": "grunt mochaTest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bitwit/grunt-git-flow-bump.git"
   },
   "keywords": [
     "grunt"
