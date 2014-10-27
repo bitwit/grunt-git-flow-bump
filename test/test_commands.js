@@ -100,7 +100,8 @@ describe('git functions', function () {
             minorBranch: '',
             majorBranch: ''
         };
-        return git.determineBumpType(grunt, opts)
+        //will look at latest commit instead of a specific hash
+        return git.determineBumpType(grunt, opts, '`git rev-parse HEAD`')
             .should.eventually.equal('patch');
     });
 });
