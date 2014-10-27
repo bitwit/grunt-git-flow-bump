@@ -1,6 +1,6 @@
 {
   "name": "grunt-git-flow-bump",
-  "version": "v0.0.6-1-gf278-d",
+  "version": "0.0.6",
   "description": "Version your project according to an opinionated git workflow",
   "main": "tasks/gitFlowBump.js",
   "scripts": {
