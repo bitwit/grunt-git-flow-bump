@@ -40,8 +40,8 @@ grunt.initConfig({
       files: ['package.json'],
       updateConfigs: [], // array of config properties to update (with files)
 
-      majorBranch: 'release',
-      minorBranch: 'develop',
+      majorBranch: 'remotes/origin/release',
+      minorBranch: 'remotes/origin/develop',
       patchBranch: '*',
       masterOnly: true,
 
